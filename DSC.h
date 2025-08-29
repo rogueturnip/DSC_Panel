@@ -72,6 +72,9 @@ class DSC : public Print  // Initialize DSC as an extension of the print class
     byte get_pCmd(void);
     byte get_kCmd(void);
     
+    // Sends a keypad key code of four data bytes
+    bool send_key(byte aa, byte bb, byte cc, byte dd);
+    
     // Returns whether the time is available or not (T or F)
     bool get_time(void);
     
@@ -84,7 +87,7 @@ class DSC : public Print  // Initialize DSC as an extension of the print class
     
     // Conversion operation functions
     unsigned int binToInt(String &dataStr, int offset, int dataLen);
-    const char* binToChar(String &dataStr, int offset, int endData);    
+    //const char* binToChar(String &dataStr, int offset, int endData);  // not needed
     const String byteToBin(byte b, byte digits);
     unsigned int byteToInt(byte* dataArr, int offset, int dataLen, bool padding);
     
@@ -113,12 +116,6 @@ class DSC : public Print  // Initialize DSC as an extension of the print class
     bool timeAvailable;
     bool testFlag;
     
-    // Class level string buffers to hold byte to binary conversions
-    //   - these should stay pretty small to avoid memory problems
-    String byteBuf1;
-    String byteBuf2;
-    String byteBuf3;
-
   private:
     uint8_t intrNum;
 };
